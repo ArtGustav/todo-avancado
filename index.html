@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List Avançado</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Gerenciador de Tarefas</h1>
+      <p>Organize suas tarefas com prioridade, busca e filtros.</p>
+    </header>
+
+    <section class="painel formulario">
+      <h2 id="titulo-formulario">Nova tarefa</h2>
+      <form id="form-tarefa" novalidate>
+        <input type="hidden" id="id-tarefa" />
+
+        <label for="titulo">Título *</label>
+        <input id="titulo" name="titulo" type="text" maxlength="100" placeholder="Ex.: Estudar JavaScript" required />
+        <small class="erro" id="erro-titulo"></small>
+
+        <label for="descricao">Descrição</label>
+        <textarea id="descricao" name="descricao" rows="3" maxlength="250" placeholder="Detalhes opcionais"></textarea>
+
+        <label for="prioridade">Prioridade</label>
+        <select id="prioridade" name="prioridade">
+          <option value="baixa">Baixa</option>
+          <option value="media" selected>Média</option>
+          <option value="alta">Alta</option>
+        </select>
+
+        <div class="acoes-formulario">
+          <button type="submit" class="btn primario" id="btn-salvar">Salvar tarefa</button>
+          <button type="button" class="btn" id="btn-cancelar" hidden>Cancelar edição</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="painel controles">
+      <div class="filtros" role="group" aria-label="Filtros de tarefa">
+        <button class="btn-filtro ativo" data-filtro="todas" type="button">Todas</button>
+        <button class="btn-filtro" data-filtro="pendentes" type="button">Pendentes</button>
+        <button class="btn-filtro" data-filtro="concluidas" type="button">Concluídas</button>
+      </div>
+
+      <div class="busca">
+        <label for="busca">Buscar</label>
+        <input id="busca" type="search" placeholder="Título ou descrição" />
+      </div>
+
+      <div class="contadores" id="contadores"></div>
+    </section>
+
+    <section class="painel lista">
+      <ul id="lista-tarefas" aria-live="polite"></ul>
+      <p id="mensagem-vazia" class="mensagem-vazia">Nenhuma tarefa encontrada.</p>
+    </section>
+  </main>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
